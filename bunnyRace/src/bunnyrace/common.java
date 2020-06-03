@@ -6,6 +6,8 @@ import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -15,7 +17,7 @@ public class common {
     public static Font font_italic        = new Font("Times New Roman", Font.ITALIC, 16);
     public static Font font_common        = new Font("Times New Roman", Font.PLAIN, 14);
     
-    public static final String[] MEGENGEDETT_KITERJESZTESEK = new String[] {"xls", "xlsx", "csv", "ods", "txt"}; //@todo
+    public static Map<String, String> CONFIG_DATA = new LinkedHashMap<String, String>();
     
     public static int randomIntBetween(int a, int b) {
         return (int)Math.floor(Math.random() * ( b-a+1 )+ a);

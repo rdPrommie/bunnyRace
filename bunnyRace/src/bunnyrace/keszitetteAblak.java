@@ -2,6 +2,8 @@ package bunnyrace;
 
 import javax.swing.JPanel;
 import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -24,10 +26,16 @@ public class keszitetteAblak extends javax.swing.JFrame {
     keszitetteAblak() {
         felepit();
         setTitle("Készítette");
-        setSize(new java.awt.Dimension(500, 400));
         setResizable(rootPaneCheckingEnabled);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(3);
+        
+        int width  = 1280;
+        int height = 720;
+        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (screen.width-width)/2;
+        int y = (screen.height-height)/2;
+        setBounds(x,y,width,height);
     }
     
     void felepit() {

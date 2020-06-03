@@ -1,5 +1,7 @@
 package bunnyrace;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -14,7 +16,6 @@ import javax.swing.JPanel;
 
 public class startAblak extends JFrame{
     
-    private BufferedImage image;
     private JButton button_jatek                = new JButton("Játék");
     private JButton button_beallitasok          = new JButton("Beálltások");
     private JButton button_kilepes              = new JButton("Kilépés");
@@ -31,7 +32,13 @@ public class startAblak extends JFrame{
         setResizable(false);
         setDefaultCloseOperation(3);
         setLocationRelativeTo(null);
-        setSize(new java.awt.Dimension(500,400));
+        
+        int width  = 1280;
+        int height = 720;
+        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (screen.width-width)/2;
+        int y = (screen.height-height)/2;
+        setBounds(x,y,width,height);
     }
     
     void felepit() {
