@@ -7,9 +7,10 @@ import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-public class keszitetteAblak extends javax.swing.JFrame {
+public class keszitetteAblak extends javax.swing.JPanel {
     
     private JButton button_back                 = new JButton("Vissza");
+    private JPanel main_panel                   = new JPanel();
     private JPanel panel_cim_sor                = new JPanel();
     private JPanel panel_nev_sor                = new JPanel();
     private JPanel panel_tovabbi_adatok_sor     = new JPanel();
@@ -25,23 +26,11 @@ public class keszitetteAblak extends javax.swing.JFrame {
 
     keszitetteAblak() {
         felepit();
-        setTitle("Készítette");
-        setResizable(rootPaneCheckingEnabled);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(3);
-        
-        int width  = 1280;
-        int height = 720;
-        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-        int x = (screen.width-width)/2;
-        int y = (screen.height-height)/2;
-        setBounds(x,y,width,height);
     }
     
     void felepit() {
-        Container cp = getContentPane();
-        cp.setLayout(new javax.swing.BoxLayout(cp, 3));
-        cp.add(panel_cim_sor); cp.add(panel_nev_sor); cp.add(panel_tovabbi_adatok_sor); cp.add(panel_vissza_gomb_sor);
+        main_panel.setLayout(new javax.swing.BoxLayout(cp, 3));
+        main_panel.add(panel_cim_sor); cp.add(panel_nev_sor); cp.add(panel_tovabbi_adatok_sor); cp.add(panel_vissza_gomb_sor);
         panel_cim_sor.add(label_keszitette); label_keszitette.setFont(common.font_bold_italic);
         panel_nev_sor.add(label_nev); label_nev.setFont(common.font_italic);
         label_tovabbi_adatok.setText("<html>" + tel + "<br>" + email + "<br>" + github);
@@ -52,14 +41,12 @@ public class keszitetteAblak extends javax.swing.JFrame {
         button_back.addActionListener(new GombFigyelo());
         panel_vissza_gomb_sor.add(button_back);
         
-        pack();
-        
     }
     
     class GombFigyelo implements java.awt.event.ActionListener {
         public void actionPerformed(java.awt.event.ActionEvent e) {
             if(e.getSource() == button_back) {
-                dispose(); System.out.println("Disposed: keszitetteAblak."); 
+                //@todo cardLayout or something System.out.println("Disposed: keszitetteAblak."); 
                 startAblak ablak = new startAblak();
                 //common.makeFullScreen(ablak); @todo
                 ablak.setVisible(true);
