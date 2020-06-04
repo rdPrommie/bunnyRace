@@ -3,55 +3,50 @@ package bunnyrace;
 import javax.swing.JPanel;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Toolkit;
+import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 
-public class keszitetteAblak extends javax.swing.JPanel {
-    
-    private JButton button_back                 = new JButton("Vissza");
-    private JPanel main_panel                   = new JPanel();
-    private JPanel panel_cim_sor                = new JPanel();
-    private JPanel panel_nev_sor                = new JPanel();
-    private JPanel panel_tovabbi_adatok_sor     = new JPanel();
-    private JPanel panel_vissza_gomb_sor        = new JPanel();
-    private JLabel label_keszitette             = new JLabel("Készítette");
-    private JLabel label_nev                    = new JLabel("Ruszin Dániel");
-    private JLabel label_tovabbi_adatok         = new JLabel("");
-    private final String tel                    = "Tel.: +36-20/444-2365";
-    private final String email                  = "E-mail: daniel.ruszin98@gmail.com";
-    private final String github                 = "Github: https://github.com/rdPrommie";
-  
-    
+public class keszitetteAblak {
 
-    keszitetteAblak() {
-        felepit();
+    private static final String TEL = "Tel.: +36-20/444-2365";
+    private static final String EMAIL = "E-mail: daniel.ruszin98@gmail.com";
+    private static final String GITHUB = "Github: https://github.com/rdPrommie";
+    
+    private JPanel mainPanel = new JPanel();
+    private JButton back = new JButton("Vissza");
+
+    private JButton button_back = new JButton("Vissza");
+    private JPanel main_panel = new JPanel();
+    private JPanel panel_cim_sor = new JPanel();
+    private JPanel panel_nev_sor = new JPanel();
+    private JPanel panel_tovabbi_adatok_sor = new JPanel();
+    private JPanel panel_vissza_gomb_sor = new JPanel();
+    private JLabel label_keszitette = new JLabel("Készítette");
+    private JLabel label_nev = new JLabel("Ruszin Dániel");
+    private JLabel label_tovabbi_adatok = new JLabel("");
+
+    public keszitetteAblak() {
+        mainPanel.setLayout(new FlowLayout());
+        back = new JButton("exit");
+
+        mainPanel.add(new JLabel("Hello World"));
+        mainPanel.add(back);
+
     }
     
-    void felepit() {
-        main_panel.setLayout(new javax.swing.BoxLayout(cp, 3));
-        main_panel.add(panel_cim_sor); cp.add(panel_nev_sor); cp.add(panel_tovabbi_adatok_sor); cp.add(panel_vissza_gomb_sor);
-        panel_cim_sor.add(label_keszitette); label_keszitette.setFont(common.font_bold_italic);
-        panel_nev_sor.add(label_nev); label_nev.setFont(common.font_italic);
-        label_tovabbi_adatok.setText("<html>" + tel + "<br>" + email + "<br>" + github);
-        panel_tovabbi_adatok_sor.add(label_tovabbi_adatok); label_tovabbi_adatok.setFont(common.font_common);
-        
-        
-        button_back.setSize(new java.awt.Dimension(100,100));
-        button_back.addActionListener(new GombFigyelo());
-        panel_vissza_gomb_sor.add(button_back);
-        
+    public void addBackBtnActionListener(ActionListener listener) {
+      back.addActionListener(listener);
     }
-    
-    class GombFigyelo implements java.awt.event.ActionListener {
-        public void actionPerformed(java.awt.event.ActionEvent e) {
-            if(e.getSource() == button_back) {
-                //@todo cardLayout or something System.out.println("Disposed: keszitetteAblak."); 
-                startAblak ablak = new startAblak();
-                //common.makeFullScreen(ablak); @todo
-                ablak.setVisible(true);
-            }
-        }
+
+    public JComponent getMainComponent() {
+        return mainPanel;
     }
 
 }
